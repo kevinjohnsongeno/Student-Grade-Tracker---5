@@ -1,6 +1,6 @@
-# StudentLogin Database
+# Grade Tracker Database
 
-**StudentLogin** is a simple system designed to manage and relate:
+**Grade Tracker** is a simple system designed to manage and relate:
 
 - Student records
 - Student login credentials
