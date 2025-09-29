@@ -1,0 +1,44 @@
+-- Table creation with students data
+CREATE TABLE students (
+  student_id  INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  student_name VARCHAR(50) NOT NULL,
+  batch VARCHAR(5) DEFAULT NULL,
+  username VARCHAR(15) NOT NULL UNIQUE
+);
+
+-- Table creation with students login data
+CREATE TABLE studentlogin (
+  student_id INT NOT NULL,
+  username VARCHAR(15) PRIMARY KEY NOT NULL,
+  password VARCHAR(30) NOT NULL,
+  FOREIGN KEY (student_id) REFERENCES students(student_id),
+  FOREIGN KEY (username) REFERENCES students(username)
+);
+-- List of students who had successfully logged in(INNER JOIN)
+SELECT sl.student_id, s.student_name
+FROM studentlogin AS sl
+INNER JOIN students AS s
+ON sl.student_id = s.student_id;
+
+-- List of all students with the login data if available(LEFT JOIN)
+SELECT s.student_id, s.student_name, sl.username, sl.password
+FROM students AS s
+LEFT JOIN studentlogin AS sl
+ON s.student_id = sl.student_id;
+
+-- List of all login records with matching student data if available(RIGHT JOIN)
+SELECT s.student_id, s.student_name, sl.username, sl.password
+FROM students AS s
+RIGHT JOIN studentlogin AS sl
+ON s.student_id = sl.student_id;
+
+-- Combining of LEFT and RIGHT JOIN results (UNION, FULL OUTER JOIN)
+SELECT s.student_id, s.student_name, sl.username, sl.password
+FROM students AS s
+LEFT JOIN studentlogin AS sl
+ON s.student_id = sl.student_id
+UNION
+SELECT s.student_id, s.student_name, sl.username, sl.password
+FROM students AS s
+RIGHT JOIN studentlogin AS sl
+ON s.student_id = sl.student_id;
