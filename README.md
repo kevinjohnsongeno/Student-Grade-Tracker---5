@@ -59,7 +59,7 @@ This section explains the SQL commands used to join the `students` and `studentl
 
 ---
 
-By understanding and using these SQL commands, you can efficiently manage and analyze student information alongside their login credentials, ensuring data integrity and completeness.
+By understanding and using these SQL commands, it is efficient to manage and analyze student information along with the login credentials, ensuring data integrity and completeness.
 
 ---
 
